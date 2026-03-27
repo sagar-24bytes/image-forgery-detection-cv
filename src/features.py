@@ -35,7 +35,7 @@ def extract_hog(image):
 
     return features[:200]
 
-# Color histogram (important)
+# Color histogram 
 def extract_color(image):
     hist = cv2.calcHist([image], [0,1,2], None,
                         [8,8,8], [0,256,0,256,0,256])

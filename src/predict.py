@@ -10,7 +10,7 @@ from src.features import extract_features, preprocess
 # Check model exists
 # -------------------------------
 if not os.path.exists("model.pkl"):
-    print("❌ Model not found! Run train.py first.")
+    print("!! Model not found! Run train.py first.")
     exit()
 
 # Load model & scaler
@@ -19,12 +19,12 @@ scaler = joblib.load("scaler.pkl")
 
 
 # -------------------------------
-# Load mask function (DEFINE FIRST)
+# Load mask function 
 # -------------------------------
 def load_mask(image_path):
     mask_path = image_path.replace("fake", "mask")
 
-    # Try different extensions
+    
     if not os.path.exists(mask_path):
         mask_path = mask_path.replace(".jpg", ".png")
 
@@ -44,7 +44,7 @@ def predict_image(path):
     img = cv2.imread(path)
 
     if img is None:
-        print("❌ Image not found")
+        print("!Image not found")
         return
 
     img_resized = preprocess(img)
@@ -75,7 +75,7 @@ def predict_image(path):
         overlay[mask > 0] = [255, 0, 0]
 
     # -------------------------------
-    # Plot EVERYTHING INSIDE FUNCTION
+    # Plotting Section
     # -------------------------------
     plt.figure(figsize=(12,4))
 
@@ -105,6 +105,6 @@ def predict_image(path):
 
 
 # -------------------------------
-# TEST IMAGE
+# TEST IMAGE (contains path to a test image in data\fake folder)
 # -------------------------------
 predict_image(r"B:\image-forgery-detection-cv\data\fake\copymove\00048.png")

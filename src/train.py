@@ -9,7 +9,7 @@ from src.features import extract_features
 from src.utils import load_images
 
 # -------------------------------
-# Load data (INCREASED SIZE)
+# Load data 
 # -------------------------------
 real_imgs, real_labels = load_images("data/real", 0, limit=100)
 fake_imgs, fake_labels = load_images("data/fake", 1, limit=100)
@@ -31,7 +31,7 @@ y = np.array(labels)
 print("Dataset shape:", X.shape)
 
 # -------------------------------
-# NORMALIZATION (IMPORTANT)
+# NORMALIZATION 
 # -------------------------------
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
@@ -39,9 +39,6 @@ X = scaler.fit_transform(X)
 # Save scaler
 joblib.dump(scaler, "scaler.pkl")
 
-from sklearn.utils import shuffle
-# # shuffling data 
-# X, y = shuffle(X, y, random_state=42)
 # -------------------------------
 # Train-test split
 # -------------------------------
